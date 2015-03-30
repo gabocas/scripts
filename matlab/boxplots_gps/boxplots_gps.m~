@@ -11,7 +11,7 @@ function boxplots_gps(files,boxplot_flag,catIdx,options)
 %         files.tp2={'/Users/gabocas/Documents/Datasets/Prisma/TAB/TAB2/gps.mat', ...
 %              '/Users/gabocas/Documents/Datasets/Prisma/EZQ/EZQ2/gps.mat'};
 %       *boxplot_flag: 0 if you want to plot violinplots
-%       *catIdx: column vector with size n_grp*number of subjects per group ? {1,2,...n_grp}
+catIdx
 %       *options: struct with the next fields:
 %           - max_length: For unpaired groups, this value should be the
 %             the number of subj of the bigger group * num of vertex 
