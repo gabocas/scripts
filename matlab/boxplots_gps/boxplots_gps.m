@@ -28,6 +28,7 @@ tp_labels=options.tp_labels;%{'TP_1','TP_2'};
 gps_labels=options.gps_labels;
 N=options.N;
 n_ver=options.n_vert;
+n_files=options.n_files;
 n_grp=numel(grp_labels);
 n_tp=numel(tp_labels);%2;
 n_gp=numel(gps_labels);%4;
@@ -45,7 +46,7 @@ gp_ind=0;
 for j=1:n_gp
     for i=1:n_tp
         grp_ind=0;
-        for k=1:n_grp
+        for k=1:n_files%n_grp
             load(files.(['tp' num2str(i)]){k});
 %             if k==1
 %                 [m,n]=size(gps);
