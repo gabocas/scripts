@@ -21,6 +21,7 @@ function boxplots_gps(files,boxplot_flag,options)
 %           - tp_labels: time points labels, eg.
 %           options.tp_labels={'TP1','TP2'};
 %          - N: number of subjects per group , eg. options.N=[17 42 5];
+%          - n_files: number of files, it could be that one file stores more than one group data.
 addpath(genpath('plotSpread'));%Add plotSpread function developed by Jonas (2009) 
 max_length=options.max_length;%19536;%Max length of the number of subj * num of vertex (264*74)
 grp_labels=options.grp_labels;
@@ -49,13 +50,13 @@ for j=1:n_gp
         for k=1:n_files%n_grp
             load(files.(['tp' num2str(i)]){k});
 %             if k==1
-%                 [m,n]=size(gps);
+                 [m,n]=size(gps);
 %                 n_ver=m/n_gp;
 %             end
             %display(['max. val. ' files.(['tp' num2str(i)]){k} ' : ' num2str(max(gps(:)))])
             gp=gps(gp_ind+1:gp_ind+n_ver,:);
             bp_mat(grp_ind+1:grp_ind+numel(gp(:)),i,j)=gp(:);
-            grp_ind=grp_ind+max_length;
+            grp_ind=grp_ind+n_ver*n;%max_length;
         end
         
         
@@ -66,7 +67,7 @@ for j=1:n_gp
     else
         plotSpread(bp_mat(:,:,j),'categoryIdx',catIdx,...
             'categoryMarkers',category_m(1:n_grp),'categoryColors', ...
-            category_m(1:n_grp),'xNames',tp_labels)
+            category_c(1:n_grp),'xNames',tp_labels)
     end
     title([gps_labels{j} ' tp ' num2str(i)],'Interpreter','none')
     ylabel(gps_labels{j},'Interpreter','none')
