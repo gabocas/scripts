@@ -18,6 +18,7 @@ sub_id_pref=$1; shift
 dparsf_flag=$1; shift
 t1_folder=$1; shift
 epi_folder=$1; shift
+output_dir=$1; shift
 output_dir=$data_dir/${output_dir}
 mkdir $output_dir
 touch $output_dir/files_info.txt
